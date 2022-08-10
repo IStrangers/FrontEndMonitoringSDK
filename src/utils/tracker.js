@@ -38,7 +38,7 @@ class SendTracker {
   }
 }
 
-const DefaultTracker = new SendTracker("")
+const DefaultTracker = new SendTracker("http://localhost:8080/logger")
 
 export {
   DefaultTracker,

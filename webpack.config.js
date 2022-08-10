@@ -12,6 +12,18 @@ module.exports = {
   devServer: {
     static: {
       directory: path.resolve(__dirname, "dist")
+    },
+    onBeforeSetupMiddleware(devServer) {
+      const { app } = devServer
+      app.post('/logger',function(req,res) {
+        res.json({ success: true})
+      })
+      app.get('/success',function(req,res) {
+        res.json({ id: 1})
+      })
+      app.post('/error',function(req,res) {
+        res.sendStatus(5000)
+      })
     }
   },
   plugins: [
