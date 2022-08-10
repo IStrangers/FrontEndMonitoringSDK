@@ -16,7 +16,15 @@ function getLastEvent() {
   return lastEvent
 }
 
-function getSelector(path) {
+function getSelector(path,toPathArray = false) {
+  if(toPathArray) {
+    const newPath = []
+    while(path) {
+      newPath.push(path)
+      path = path.parentNode
+    }
+    path = newPath
+  }
   if(Array.isArray(path)) {
     return getSelectors(path)
   }
